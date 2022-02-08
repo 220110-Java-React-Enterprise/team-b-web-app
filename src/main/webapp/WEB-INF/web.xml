@@ -12,7 +12,7 @@
         version="2.5">
     
     <listener>
-        <listener-class>servlets.DependencyLoaderListener</listener-class>
+        <listener-class>utils.DependencyLoaderListener</listener-class>
     </listener>
 
     <servlet>
@@ -25,12 +25,30 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>dataServlet</servlet-name>
-        <servlet-class>servlets.DataServlet</servlet-class>
+        <servlet-name>CustomerServlet</servlet-name>
+        <servlet-class>servlets.CustomerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>dataServlet</servlet-name>
-        <url-pattern>/data</url-pattern>
+        <servlet-name>CustomerServlet</servlet-name>
+        <url-pattern>/customer</url-pattern>
     </servlet-mapping>
-    
+
+    <servlet>
+        <servlet-name>FlightsServlet</servlet-name>
+        <servlet-class>servlets.FlightsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FlightsServlet</servlet-name>
+        <url-pattern>/flights</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TicketsServlet</servlet-name>
+        <servlet-class>servlets.TicketsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TicketsServlet</servlet-name>
+        <url-pattern>/tickets</url-pattern>
+    </servlet-mapping>
+
 </web-app>
