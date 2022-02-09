@@ -1,7 +1,6 @@
 package utils;
 import java.io.*;
 import java.util.Properties;
-import java.util.Scanner;
 
 public class DBcredentials {
     private String hostname;
@@ -26,26 +25,17 @@ public class DBcredentials {
             password = props.getProperty("password");
 
             //next we concatenate the credentials needed to complete the connection.
-            String connectionString = "jdbc:mariadb://" +
-                    props.getProperty("hostname") + ":" +
-                    props.getProperty("port") + "/" +
-                    props.getProperty("dbname") + "?user=" +
-                    props.getProperty("username") + "&password=" +
-                    props.getProperty("password");
-            System.out.println(connectionString);
-//            File file = new File("G:\\Java Projects\\props.txt");
-//            Scanner reader = new Scanner(file);
-//            while (reader.hasNextLine()) {
-//                hostname = reader.nextLine();
-//                port = reader.nextLine();
-//                dbname = reader.nextLine();
-//                username = reader.nextLine();
-//                password = reader.nextLine();
-//                //connection = connect(hostname, port, DBName, userName, password);
-//            }
-//            reader.close();
+
+//            String connectionString = "jdbc:mariadb://" +
+//                    props.getProperty("hostname") + ":" +
+//                    props.getProperty("port") + "/" +
+//                    props.getProperty("dbname") + "?user=" +
+//                    props.getProperty("username") + "&password=" +
+//                    props.getProperty("password");
+//            System.out.println(connectionString);
+
         } catch (IOException | ClassNotFoundException e) {
-            FileLogger.getFileLogger().log(e);
+            e.printStackTrace();
         }
 
 

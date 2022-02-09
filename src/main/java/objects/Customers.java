@@ -7,7 +7,7 @@ import Annotations.Table;
 
 @Table(name = "Customers")
 public class Customers {
-        @PrimaryKey(name = "customer_id", type = "int")
+        @PrimaryKey(name = "customerId", type = "int")
         private Integer customerId;
 
         @Column(name = "first_name", type = "string")

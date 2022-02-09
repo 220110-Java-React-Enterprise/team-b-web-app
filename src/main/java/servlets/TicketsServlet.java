@@ -4,7 +4,6 @@ import ORM.ORM;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import objects.Tickets;
 import utils.DBcredentials;
-import utils.FileLogger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
