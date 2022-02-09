@@ -1,5 +1,10 @@
 package servlets;
 
+import ORM.ORM;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import objects.Customers;
+import objects.Tickets;
+import utils.DBcredentials;
 import utils.FileLogger;
 
 import javax.servlet.ServletException;
@@ -13,16 +18,67 @@ public class TicketsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        try {
-            //go back
-        } catch (Exception e) {
-            FileLogger.getFileLogger().log(e);
-        }
+        ObjectMapper mapper = new ObjectMapper();
+        Tickets payload = mapper.readValue(req.getInputStream(), Tickets.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+
+        payload = (Tickets) orm.ormEntry(payload,"search");
+        String JSON = mapper.writeValueAsString(payload);
+        resp.getWriter().print(JSON);
+        resp.setStatus(200);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        ObjectMapper mapper = new ObjectMapper();
+        Tickets payload = mapper.readValue(req.getInputStream(), Tickets.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+
+        orm.ormEntry(payload,"insert");
+        resp.setStatus(200);
     }
 
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Tickets payload = mapper.readValue(req.getInputStream(), Tickets.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+
+        orm.ormEntry(payload,"update");
+        resp.setStatus(200);
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Tickets payload = mapper.readValue(req.getInputStream(), Tickets.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+
+        orm.ormEntry(payload,"delete");
+        resp.setStatus(200);
+    }
 }
