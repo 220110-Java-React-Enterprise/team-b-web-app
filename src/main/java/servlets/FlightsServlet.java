@@ -1,5 +1,7 @@
 package servlets;
 
+import utils.FileLogger;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,14 +12,11 @@ public class FlightsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String str; // how do i get this, i know its form the req not sure on the method
 
         try {
-            Object flight;
-            resp.getWriter().write(flight);
-            resp.setStatus(200);
+            //go back
         } catch (Exception e) {
-            log(e);
+            FileLogger.getFileLogger().log(e);
         }
     }
 
