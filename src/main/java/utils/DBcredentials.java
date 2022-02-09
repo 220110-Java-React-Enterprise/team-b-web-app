@@ -1,6 +1,6 @@
 package utils;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class DBcredentials {
@@ -12,18 +12,41 @@ public class DBcredentials {
 
     public DBcredentials() {
         try {
-            File file = new File("G:\\Java Projects\\props.txt");
-            Scanner reader = new Scanner(file);
-            while (reader.hasNextLine()) {
-                hostname = reader.nextLine();
-                port = reader.nextLine();
-                dbname = reader.nextLine();
-                username = reader.nextLine();
-                password = reader.nextLine();
-                //connection = connect(hostname, port, DBName, userName, password);
-            }
-            reader.close();
-        } catch (FileNotFoundException e) {
+            Properties props = new Properties();
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            InputStream input = loader.getResourceAsStream("jdbc.properties");
+            props.load(input);
+
+            Class.forName("org.mariadb.jdbc.Driver");
+
+            hostname = props.getProperty("hostname");
+            port = props.getProperty("port");
+            dbname = props.getProperty("dbname");
+            username = props.getProperty("username");
+            password = props.getProperty("password");
+
+            //next we concatenate the credentials needed to complete the connection.
+            String connectionString = "jdbc:mariadb://" +
+                    props.getProperty("hostname") + ":" +
+                    props.getProperty("port") + "/" +
+                    props.getProperty("dbname") + "?user=" +
+                    props.getProperty("username") + "&password=" +
+                    props.getProperty("password");
+            System.out.println(connectionString);
+//            File file = new File("G:\\Java Projects\\props.txt");
+//            Scanner reader = new Scanner(file);
+//            while (reader.hasNextLine()) {
+//                hostname = reader.nextLine();
+//                port = reader.nextLine();
+//                dbname = reader.nextLine();
+//                username = reader.nextLine();
+//                password = reader.nextLine();
+//                //connection = connect(hostname, port, DBName, userName, password);
+//            }
+//            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
