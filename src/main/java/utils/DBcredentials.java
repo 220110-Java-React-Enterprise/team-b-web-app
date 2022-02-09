@@ -25,6 +25,7 @@ public class DBcredentials {
             password = props.getProperty("password");
 
             //next we concatenate the credentials needed to complete the connection.
+
 //            String connectionString = "jdbc:mariadb://" +
 //                    props.getProperty("hostname") + ":" +
 //                    props.getProperty("port") + "/" +
