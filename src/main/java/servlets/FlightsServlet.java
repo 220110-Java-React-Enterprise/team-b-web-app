@@ -1,6 +1,9 @@
 package servlets;
 
-import utils.FileLogger;
+import ORM.ORM;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import objects.Flights;
+import utils.DBcredentials;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,11 +16,18 @@ public class FlightsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        try {
-            //go back
-        } catch (Exception e) {
-            FileLogger.getFileLogger().log(e);
-        }
+        ObjectMapper mapper = new ObjectMapper();
+        Flights payload = mapper.readValue(req.getInputStream(), Flights.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        cred.printValues();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+        orm.ormEntry(payload, "insert");
+        resp.setStatus(200);
     }
 
     @Override
@@ -25,4 +35,13 @@ public class FlightsServlet extends HttpServlet {
         super.doPost(req, resp);
     }
 
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPut(req, resp);
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doDelete(req, resp);
+    }
 }
