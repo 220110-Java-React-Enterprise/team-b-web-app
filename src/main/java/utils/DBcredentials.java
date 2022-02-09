@@ -44,10 +44,8 @@ public class DBcredentials {
 //                //connection = connect(hostname, port, DBName, userName, password);
 //            }
 //            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (IOException | ClassNotFoundException e) {
+            FileLogger.getFileLogger().log(e);
         }
 
 
