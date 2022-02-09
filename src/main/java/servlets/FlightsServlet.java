@@ -18,18 +18,20 @@ public class FlightsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//        ObjectMapper mapper = new ObjectMapper();
-//        Flights payload = mapper.readValue(req.getInputStream(), Flights.class);
-//        ORM orm = new ORM();
-//        DBcredentials cred = new DBcredentials();
-//        orm.connect(cred.getHostname(),
-//                cred.getPort(),
-//                cred.getDbname(),
-//                cred.getUsername(),
-//                cred.getPassword());
-//
-//        orm.ormEntry(payload,"insert");
-//        resp.setStatus(200);
+        ObjectMapper mapper = new ObjectMapper();
+        Flights payload = mapper.readValue(req.getInputStream(), Flights.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+
+        payload = (Flights) orm.ormEntry(payload,"search");
+        String JSON = mapper.writeValueAsString(payload);
+        resp.getWriter().print(JSON);
+        resp.setStatus(200);
 
     }
 
