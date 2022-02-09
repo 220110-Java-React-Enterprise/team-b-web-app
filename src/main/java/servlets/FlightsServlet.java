@@ -20,6 +20,24 @@ public class FlightsServlet extends HttpServlet {
         Flights payload = mapper.readValue(req.getInputStream(), Flights.class);
         ORM orm = new ORM();
         DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+        orm.ormEntry(payload, "search");
+        payload = (Flights) orm.ormEntry(payload, "search");
+        String json = mapper.writeValueAsString(payload);
+        resp.getWriter().print(json);
+        resp.setStatus(200);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Flights payload = mapper.readValue(req.getInputStream(), Flights.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
         cred.printValues();
         orm.connect(cred.getHostname(),
                 cred.getPort(),
@@ -31,17 +49,33 @@ public class FlightsServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
-    }
-
-    @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPut(req, resp);
+        ObjectMapper mapper = new ObjectMapper();
+        Flights payload = mapper.readValue(req.getInputStream(), Flights.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+        orm.ormEntry(payload, "update");
+        resp.setStatus(200);
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
+        ObjectMapper mapper = new ObjectMapper();
+        Flights payload = mapper.readValue(req.getInputStream(), Flights.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        cred.printValues();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+        orm.ormEntry(payload, "delete");
+        resp.setStatus(200);
     }
 }
