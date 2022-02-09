@@ -16,7 +16,9 @@ public class Customers {
         @Column(name = "last_name", type = "string")
         private String lastName;
 
-        public Customers() {}
+        public Customers() {
+
+        }
 
     public Integer getCustomerId() {
         return customerId;

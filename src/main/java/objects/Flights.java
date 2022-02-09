@@ -7,51 +7,40 @@ import Annotations.Table;
 
 @Table(name = "flights")
 public class Flights {
-    @PrimaryKey(name = "ticket_id", type = "int")
-    @Column(name = "ticket_id", type = "int")
-    private Integer ticket_id;
+    @PrimaryKey(name = "flightId", type = "int")
+    private Integer flightId;
 
-    @ForeignKey(columnName = "customer_id", type = "int", referenceTableName = "customers", referenceTableColumn = "customer_id")
-    @Column(name = "customer_id", type = "int")
-    private Integer customer_id;
+    @Column(name = "from_location", type = "string")
+    private String from_location;
 
-    @Column(name = "flight_id", type = "int")
-    private Integer flight_id;
+    @Column(name = "to_location", type = "string")
+    private String to_location;
 
-    public Flights() {}
+    public Flights() {
 
-    public Flights(Integer ticket_id, Integer customer_id, Integer flight_id) {
-        this.ticket_id = ticket_id;
-        this.customer_id = customer_id;
-        this.flight_id = flight_id;
     }
 
-    public Flights(Integer customer_id, Integer flight_id) {
-        this.customer_id = customer_id;
-        this.flight_id = flight_id;
+    public Integer getFlightId() {
+        return flightId;
     }
 
-    public Integer getTicket_id() {
-        return ticket_id;
+    public void setFlightId(Integer flightId) {
+        this.flightId = flightId;
     }
 
-    public void setTicket_id(Integer ticket_id) {
-        this.ticket_id = ticket_id;
+    public String getFrom_location() {
+        return from_location;
     }
 
-    public Integer getCustomer_id() {
-        return customer_id;
+    public void setFrom_location(String from_location) {
+        this.from_location = from_location;
     }
 
-    public void setCustomer_id(Integer customer_id) {
-        this.customer_id = customer_id;
+    public String getTo_location() {
+        return to_location;
     }
 
-    public Integer getFlight_id() {
-        return flight_id;
-    }
-
-    public void setFlight_id(Integer flight_id) {
-        this.flight_id = flight_id;
+    public void setTo_location(String to_location) {
+        this.to_location = to_location;
     }
 }

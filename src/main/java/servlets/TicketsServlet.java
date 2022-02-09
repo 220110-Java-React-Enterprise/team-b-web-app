@@ -2,8 +2,12 @@ package servlets;
 
 import ORM.ORM;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import objects.Customers;
 import objects.Tickets;
 import utils.DBcredentials;
+import utils.FileLogger;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,10 +29,13 @@ public class TicketsServlet extends HttpServlet {
                 cred.getDbname(),
                 cred.getUsername(),
                 cred.getPassword());
+
+
         orm.ormEntry(payload, "search");
         payload = (Tickets) orm.ormEntry(payload, "search");
         String json = mapper.writeValueAsString(payload);
         resp.getWriter().print(json);
+
         resp.setStatus(200);
     }
 
@@ -38,13 +45,17 @@ public class TicketsServlet extends HttpServlet {
         Tickets payload = mapper.readValue(req.getInputStream(), Tickets.class);
         ORM orm = new ORM();
         DBcredentials cred = new DBcredentials();
+
         cred.printValues();
+
         orm.connect(cred.getHostname(),
                 cred.getPort(),
                 cred.getDbname(),
                 cred.getUsername(),
                 cred.getPassword());
+
         orm.ormEntry(payload, "insert");
+
         resp.setStatus(200);
     }
 
@@ -59,7 +70,9 @@ public class TicketsServlet extends HttpServlet {
                 cred.getDbname(),
                 cred.getUsername(),
                 cred.getPassword());
+
         orm.ormEntry(payload, "update");
+
         resp.setStatus(200);
     }
 
@@ -69,13 +82,17 @@ public class TicketsServlet extends HttpServlet {
         Tickets payload = mapper.readValue(req.getInputStream(), Tickets.class);
         ORM orm = new ORM();
         DBcredentials cred = new DBcredentials();
+
         cred.printValues();
+
         orm.connect(cred.getHostname(),
                 cred.getPort(),
                 cred.getDbname(),
                 cred.getUsername(),
                 cred.getPassword());
+
         orm.ormEntry(payload, "delete");
+
         resp.setStatus(200);
     }
 }
