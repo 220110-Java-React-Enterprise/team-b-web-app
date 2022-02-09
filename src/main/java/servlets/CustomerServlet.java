@@ -15,7 +15,20 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        ObjectMapper mapper = new ObjectMapper();
+        Customers payload = mapper.readValue(req.getInputStream(), Customers.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+
+        payload = (Customers) orm.ormEntry(payload,"search");
+        String JSON = mapper.writeValueAsString(payload);
+        resp.getWriter().print(JSON);
+        resp.setStatus(200);
     }
 
     @Override
@@ -24,7 +37,6 @@ public class CustomerServlet extends HttpServlet {
         Customers payload = mapper.readValue(req.getInputStream(), Customers.class);
         ORM orm = new ORM();
         DBcredentials cred = new DBcredentials();
-        cred.printValues();
         orm.connect(cred.getHostname(),
                     cred.getPort(),
                     cred.getDbname(),
@@ -37,11 +49,33 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPut(req, resp);
+        ObjectMapper mapper = new ObjectMapper();
+        Customers payload = mapper.readValue(req.getInputStream(), Customers.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+
+        orm.ormEntry(payload,"update");
+        resp.setStatus(200);
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
+        ObjectMapper mapper = new ObjectMapper();
+        Customers payload = mapper.readValue(req.getInputStream(), Customers.class);
+        ORM orm = new ORM();
+        DBcredentials cred = new DBcredentials();
+        orm.connect(cred.getHostname(),
+                cred.getPort(),
+                cred.getDbname(),
+                cred.getUsername(),
+                cred.getPassword());
+
+        orm.ormEntry(payload,"delete");
+        resp.setStatus(200);
     }
 }
