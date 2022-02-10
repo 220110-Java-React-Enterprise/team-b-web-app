@@ -45,9 +45,11 @@ public class CustomerServlet extends HttpServlet {
     //doPost - Crud -
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("I am here");
         try {
             ObjectMapper mapper = new ObjectMapper();
             Customers payload = mapper.readValue(req.getInputStream(), Customers.class);
+            System.out.println("i am here 2");
             ORM orm = new ORM();
             DBcredentials cred = new DBcredentials();
             orm.connect(cred.getHostname(),

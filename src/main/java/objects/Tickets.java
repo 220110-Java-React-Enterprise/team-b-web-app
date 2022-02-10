@@ -10,9 +10,9 @@ public class Tickets {
 
     @PrimaryKey(name = "ticket_id", type="int")
     private int ticket_id;
-    @ForeignKey(columnName = "customer_id", type = "int", referenceTableName = "customers", referenceTableColumn = "customerId")
+    @ForeignKey(columnName = "customer_id", type = "int", referenceTableName = "customers", referenceTableColumn = "customer_id")
     private int customer_id;
-    @ForeignKey(columnName = "flight_id", type = "int", referenceTableName = "flights", referenceTableColumn = "flightId")
+    @ForeignKey(columnName = "flight_id", type = "int", referenceTableName = "flights", referenceTableColumn = "flight_id")
     private int flight_id;
 
 
