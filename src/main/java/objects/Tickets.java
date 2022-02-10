@@ -7,14 +7,14 @@ import Annotations.Table;
 
 @Table(name = "tickets")
 public class Tickets {
-<<<<<<< HEAD
+
     // defines columns for tickets table
     @PrimaryKey(name = "ticketId", type="int")
     private int tickerId;
-=======
+
     @PrimaryKey(name = "ticketId", type="int")
     private int ticketId;
->>>>>>> 719dc98ceb23ffb6cae377677a03489573566fe1
+
     @ForeignKey(columnName = "customerId", type = "int", referenceTableName = "customers", referenceTableColumn = "customerId")
     private int customerId;
     @ForeignKey(columnName = "flightId", type = "int", referenceTableName = "flights", referenceTableColumn = "flightId")
