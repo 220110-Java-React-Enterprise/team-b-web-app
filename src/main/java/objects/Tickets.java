@@ -7,6 +7,7 @@ import Annotations.Table;
 
 @Table(name = "tickets")
 public class Tickets {
+    // defines columns for tickets table
     @PrimaryKey(name = "tickerId", type="int")
     private int tickerId;
     @ForeignKey(columnName = "customerId", type = "int", referenceTableName = "customers", referenceTableColumn = "customerId")

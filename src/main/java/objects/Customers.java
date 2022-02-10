@@ -7,6 +7,7 @@ import Annotations.Table;
 
 @Table(name = "Customers")
 public class Customers {
+    // defines columns for customer table
         @PrimaryKey(name = "customerId", type = "int")
         private Integer customerId;
 

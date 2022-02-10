@@ -11,10 +11,11 @@ import java.time.format.DateTimeFormatter;
  * Interface includes: 2 methods to get the singleton, and 2 methods to input info to be logged
  */
 public class FileLogger {
-    //What do we need to set this up as a singleton?
-    //private constructor
-    //private static reference to singleton object
-    //public getter that creates or returns our singleton
+    /*
+    generic exception logger, .txt file written when exceptions are thrown
+    logs only log(Exception e)
+    log(String message) also implemented but never used here
+     */
     private static FileLogger fileLogger;
     private static String filePath;
     private static boolean consoleOutput;

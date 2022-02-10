@@ -4,14 +4,23 @@ import ORM.ORM;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import objects.Tickets;
 import utils.DBcredentials;
+import utils.FileLogger;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/*
+    basic CRUD functionality for TicketServlet
+    using custom ORM added in Project Structure
+    all exceptions are logged into a .txt file
+ */
+
 public class TicketsServlet extends HttpServlet {
 
+    // doGet - cRud - function for Ticket Servlet
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
@@ -33,10 +42,12 @@ public class TicketsServlet extends HttpServlet {
 
             resp.setStatus(200);
         } catch (Exception e) {
+            //any thrown exception is written to a text file
             FileLogger.getFileLogger().log(e);
         }
     }
 
+    //doPost - Crud -
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
@@ -61,6 +72,7 @@ public class TicketsServlet extends HttpServlet {
         }
     }
 
+    // doPut - crUd -
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
@@ -82,6 +94,7 @@ public class TicketsServlet extends HttpServlet {
         }
     }
 
+    //doDelete - cruD -
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {

@@ -7,6 +7,7 @@ import Annotations.Table;
 
 @Table(name = "flights")
 public class Flights {
+    // defines columns for flights table
     @PrimaryKey(name = "flightId", type = "int")
     private Integer flightId;
 
