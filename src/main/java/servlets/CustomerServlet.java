@@ -25,13 +25,11 @@ public class CustomerServlet extends HttpServlet {
             Customers payload = mapper.readValue(req.getInputStream(), Customers.class);
             ORM orm = new ORM();
             DBcredentials cred = new DBcredentials();
-            cred.printValues();
             orm.connect(cred.getHostname(),
                     cred.getPort(),
                     cred.getDbname(),
                     cred.getUsername(),
                     cred.getPassword());
-            cred.printValues();
             payload = (Customers) orm.ormEntry(payload, "search");
             String JSON = mapper.writeValueAsString(payload);
             resp.getWriter().print(JSON);
