@@ -51,4 +51,31 @@
         <url-pattern>/tickets</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CustomerTableCreationServlet</servlet-name>
+        <servlet-class>servlets.CustomerTableCreation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerTableCreationServlet</servlet-name>
+        <url-pattern>/createcustomertable</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FlightsTableCreationServlet</servlet-name>
+        <servlet-class>servlets.FlightsTableCreation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>FlightsTableCreationServlet</servlet-name>
+    <url-pattern>/createflighttable</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TicketTableCreationServlet</servlet-name>
+        <servlet-class>servlets.TicketsTableCreation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TicketTableCreationServlet</servlet-name>
+        <url-pattern>/createtickettable</url-pattern>
+    </servlet-mapping>
+
 </web-app>
