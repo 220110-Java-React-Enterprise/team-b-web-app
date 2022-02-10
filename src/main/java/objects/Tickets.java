@@ -7,8 +7,8 @@ import Annotations.Table;
 
 @Table(name = "tickets")
 public class Tickets {
-    @PrimaryKey(name = "tickerId", type="int")
-    private int tickerId;
+    @PrimaryKey(name = "ticketId", type="int")
+    private int ticketId;
     @ForeignKey(columnName = "customerId", type = "int", referenceTableName = "customers", referenceTableColumn = "customerId")
     private int customerId;
     @ForeignKey(columnName = "flightId", type = "int", referenceTableName = "flights", referenceTableColumn = "flightId")
@@ -18,11 +18,11 @@ public class Tickets {
     }
 
     public int getTickerId() {
-        return tickerId;
+        return ticketId;
     }
 
     public void setTickerId(int tickerId) {
-        this.tickerId = tickerId;
+        this.ticketId = tickerId;
     }
 
     public int getCustomerId() {
