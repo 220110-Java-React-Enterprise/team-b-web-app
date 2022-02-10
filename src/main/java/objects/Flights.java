@@ -7,8 +7,10 @@ import Annotations.Table;
 
 @Table(name = "flights")
 public class Flights {
+
     @PrimaryKey(name = "flight_id", type = "int")
     private Integer flight_id;
+
 
     @Column(name = "from_location", type = "string")
     private String from_location;

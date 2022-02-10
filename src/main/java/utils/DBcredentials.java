@@ -9,6 +9,11 @@ public class DBcredentials {
     private String username;
     private String password;
 
+    /*
+    Flight tracker web app log in credentials for the database pulled from the .property file in resources directory
+    commented out:
+        obtaining .prop file through a filepath instead of ClassLoader and InputStream
+     */
     public DBcredentials() {
         try {
             Properties props = new Properties();
