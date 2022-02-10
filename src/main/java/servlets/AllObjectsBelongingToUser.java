@@ -17,6 +17,11 @@ import java.util.List;
 
 public class AllObjectsBelongingToUser extends HttpServlet {
     @Override
+    /**
+     * This servlet method retrieves an object, and calls the ORM
+     * methods to retrieve all data pertaining to the object given
+     * the user. 
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Object> objects = new LinkedList<>();
         objects.add(new Customers());
