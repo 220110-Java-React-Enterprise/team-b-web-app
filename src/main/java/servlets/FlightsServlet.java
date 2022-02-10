@@ -54,7 +54,7 @@ public class FlightsServlet extends HttpServlet {
             ORM orm = new ORM();
             DBcredentials cred = new DBcredentials();
 
-            cred.printValues();
+
 
             orm.connect(cred.getHostname(),
                     cred.getPort(),
@@ -100,7 +100,6 @@ public class FlightsServlet extends HttpServlet {
             Flights payload = mapper.readValue(req.getInputStream(), Flights.class);
             ORM orm = new ORM();
             DBcredentials cred = new DBcredentials();
-            cred.printValues();
             orm.connect(cred.getHostname(),
                     cred.getPort(),
                     cred.getDbname(),

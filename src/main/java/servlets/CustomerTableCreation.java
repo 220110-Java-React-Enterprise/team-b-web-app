@@ -15,7 +15,6 @@ import java.io.IOException;
 public class CustomerTableCreation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("i am at doget for customer table creation");
         try {
             Customers payload = new Customers();
             ORM orm = new ORM();
@@ -29,8 +28,7 @@ public class CustomerTableCreation extends HttpServlet {
             orm.ormEntry(payload, "create");
             resp.setStatus(200);
         } catch (Exception e) {
-            //FileLogger.getFileLogger().log(e);
-            e.printStackTrace();
+            FileLogger.getFileLogger().log(e);
         }
     }
 }

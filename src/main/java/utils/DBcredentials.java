@@ -29,15 +29,6 @@ public class DBcredentials {
             username = props.getProperty("username");
             password = props.getProperty("password");
 
-            //next we concatenate the credentials needed to complete the connection.
-
-//            String connectionString = "jdbc:mariadb://" +
-//                    props.getProperty("hostname") + ":" +
-//                    props.getProperty("port") + "/" +
-//                    props.getProperty("dbname") + "?user=" +
-//                    props.getProperty("username") + "&password=" +
-//                    props.getProperty("password");
-//            System.out.println(connectionString);
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -45,13 +36,6 @@ public class DBcredentials {
 
 
     }
-     public void printValues(){
-     System.out.println(hostname);
-     System.out.println(port);
-     System.out.println(dbname);
-     System.out.println(username);
-     System.out.println(password);
- }
 
 
     public String getHostname() {
