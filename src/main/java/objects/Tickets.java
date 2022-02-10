@@ -7,37 +7,37 @@ import Annotations.Table;
 
 @Table(name = "tickets")
 public class Tickets {
-    @PrimaryKey(name = "ticketId", type="int")
-    private int ticketId;
-    @ForeignKey(columnName = "customerId", type = "int", referenceTableName = "customers", referenceTableColumn = "customerId")
-    private int customerId;
-    @ForeignKey(columnName = "flightId", type = "int", referenceTableName = "flights", referenceTableColumn = "flightId")
-    private int flightId;
+    @PrimaryKey(name = "ticket_id", type="int")
+    private int ticket_id;
+    @ForeignKey(columnName = "customer_id", type = "int", referenceTableName = "customers", referenceTableColumn = "customerId")
+    private int customer_id;
+    @ForeignKey(columnName = "flight_id", type = "int", referenceTableName = "flights", referenceTableColumn = "flightId")
+    private int flight_id;
 
     public Tickets() {
     }
 
-    public int getTickerId() {
-        return ticketId;
+    public int getTicket_id() {
+        return ticket_id;
     }
 
-    public void setTickerId(int tickerId) {
-        this.ticketId = tickerId;
+    public void setTicket_id(int ticket_id) {
+        this.ticket_id = ticket_id;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public int getFlightId() {
-        return flightId;
+    public int getFlight_id() {
+        return flight_id;
     }
 
-    public void setFlightId(int flightId) {
-        this.flightId = flightId;
+    public void setFlight_id(int flight_id) {
+        this.flight_id = flight_id;
     }
 }

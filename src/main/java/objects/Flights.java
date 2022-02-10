@@ -7,8 +7,8 @@ import Annotations.Table;
 
 @Table(name = "flights")
 public class Flights {
-    @PrimaryKey(name = "flightId", type = "int")
-    private Integer flightId;
+    @PrimaryKey(name = "flight_id", type = "int")
+    private Integer flight_id;
 
     @Column(name = "from_location", type = "string")
     private String from_location;
@@ -20,12 +20,12 @@ public class Flights {
 
     }
 
-    public Integer getFlightId() {
-        return flightId;
+    public Integer getFlight_id() {
+        return flight_id;
     }
 
-    public void setFlightId(Integer flightId) {
-        this.flightId = flightId;
+    public void setFlight_id(Integer flight_id) {
+        this.flight_id = flight_id;
     }
 
     public String getFrom_location() {

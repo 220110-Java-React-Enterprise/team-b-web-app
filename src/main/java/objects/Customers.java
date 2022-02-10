@@ -7,11 +7,11 @@ import Annotations.Table;
 
 @Table(name = "Customers")
 public class Customers {
-        @PrimaryKey(name = "customerId", type = "int")
-        private Integer customerId;
+        @PrimaryKey(name = "customer_id", type = "int")
+        private Integer customer_id;
 
         @Column(name = "first_name", type = "string")
-        private String firstName;
+        private String first_Name;
 
         @Column(name = "last_name", type = "string")
         private String lastName;
@@ -20,20 +20,20 @@ public class Customers {
 
         }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setCustomer_id(Integer customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_Name() {
+        return first_Name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_Name(String first_Name) {
+        this.first_Name = first_Name;
     }
 
     public String getLastName() {
